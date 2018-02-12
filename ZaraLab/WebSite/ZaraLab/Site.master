@@ -11,6 +11,8 @@
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" /> 
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="Content/StyleMain.css"/>    
+	<link rel="stylesheet" href="https://cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro-icons.min.css">
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>
@@ -60,13 +62,20 @@
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </section>
-                <nav>
-                    <ul id="menu">
-                        <li><a runat="server" href="~/">Inicio</a></li>
-                        <li><a runat="server" href="~/About.aspx">Acerca de</a></li>
-                        <li><a runat="server" href="~/Contact.aspx">Contacto</a></li>
-                    </ul>
-                </nav>
+                <div class="container">
+		<span class="mif-chevron-left mif-3x boton"></span>
+		<nav>
+			<ul id="menu_principal">
+
+				<li><a href="Default.aspx"><span class="mif-home mif-3x principales"></span>Inicio</a></li>
+
+				<li><a href="About.aspx"><span class="mif-organization mif-3x principales"></span>Nosotros</a></li>
+				<li><a href="Contact.aspx"><span class="mif-contacts-mail mif-3x principales"></span>Contacto</a></li>
+                <li><a href="Roles.aspx"><span class="mif-organization mif-3x principales"></span>Permisos</a></li>
+			</ul>
+		</nav>
+	</div>
+	
             </div>
         </div>
     </header>
@@ -86,5 +95,6 @@
         </div>
     </footer>
     </form>
+    <script src="Scripts/ScriptMain.js"></script>
 </body>
 </html>
