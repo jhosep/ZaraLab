@@ -6,17 +6,7 @@
     </hgroup>
     <br />
     <asp:Button runat="server" ID="btnBuscarR" Text="Buscar"/>
+    <asp:Button runat="server" ID="btnNuevo" Text="Nuevo" OnClick="btnNuevo_Click"/>
     <br />
-    <br />
-    <asp:Label runat="server" ID="NRol" Text="Nombre:"></asp:Label>
-    <asp:TextBox runat="server" ID="txtNRol" Width="420px"></asp:TextBox>
-    <br />
-    <asp:Label runat="server" ID="TRol" Text="Descripcion:"></asp:Label>
-    <asp:TextBox runat="server" ID="txtTRol" Width="400px"></asp:TextBox>
-    <br />
-    <asp:CheckBoxList ID="CheckBoxList1" runat="server" AutoPostBack="True" Width="382px">
-        <asp:ListItem>Administrador</asp:ListItem>
-    </asp:CheckBoxList>
     
-    <asp:Button runat="server" ID="btnCrear" Text="Crear"/>
 </asp:Content>
