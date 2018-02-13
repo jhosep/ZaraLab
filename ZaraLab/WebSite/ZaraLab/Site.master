@@ -81,7 +81,7 @@
 					<ul>
                         <li><a href="#">Usuarios</a></li>
 						<li><a href="Roles.aspx">Roles</a></li>
-                        <li><a href="#">Permisos</a></li>
+                        <li><a href="Permisos.aspx">Permisos</a></li>
 					</ul>
 
                 </li>

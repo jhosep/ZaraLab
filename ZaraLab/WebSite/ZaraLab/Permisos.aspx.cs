@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-public partial class Roles : System.Web.UI.Page
+public partial class Permisos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -20,13 +20,10 @@ public partial class Roles : System.Web.UI.Page
             dr["ID"] = 1;
             dr["Descripcion"] = "Administracion de facturas";
             dt.Rows.Add(dr);
-
-            gv_lista_roles.DataSource = dt;
-            gv_lista_roles.DataBind();
+         
+            gv_rol.DataSource = dt;
+            gv_rol.DataBind();
         }
-    }
-    protected void btnNuevo_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("CrearRoles.aspx");
+
     }
 }
