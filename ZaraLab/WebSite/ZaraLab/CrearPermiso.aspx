@@ -1,20 +1,20 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.master" CodeFile ="CrearRoles.aspx.cs" Inherits="CrearRoles" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.master" CodeFile="CrearPermiso.aspx.cs" Inherits="CrearPermiso" %>
 
-<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+<asp:Content runat="server" ContentPlaceHolderID="MainContent" ID="BodyContent">
     <hgroup class="title">
         <h1>
-            Administraci&oacute;n de Roles
+            Gesti&oacute;n de Permisos
         </h1>
     </hgroup>
     <div class="panel panel-primary">
         <div class="panel-heading">
             <p style="font-size:16px;">
             <span class="mif-pin"></span>
-            Creando nuevo Rol
+            Creando nuevo Permiso
             </p>
         </div>
         <div class="panel-body">
-            <asp:Label runat="server" ID="NRol" Text="Nombre Rol" style="margin-left:-0.1%;"></asp:Label>
+            <asp:Label runat="server" ID="NRol" Text="Permiso" style="margin-left:2.5%;"></asp:Label>
             <asp:TextBox runat="server" ID="txtNRol" Width="400px"></asp:TextBox>
             <br />
             <asp:Label runat="server" ID="TRol" Text="Descripción" ></asp:Label>
@@ -25,5 +25,4 @@
             <asp:Button runat="server" ID="btnCrear" Text="Guardar" style="border-radius:8px;"/>
         </div>
     </div>
-    
 </asp:Content>

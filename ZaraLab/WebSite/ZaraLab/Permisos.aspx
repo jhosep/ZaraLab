@@ -8,7 +8,7 @@
         <div class="panel-heading">
             <p style="font-size:16px;">
             <span class="mif-user"></span>
-            Gesti&oacute;n de permisos
+            Gesti&oacute;n de Permisos
             </p>
         </div>
         <div class="panel-body">
@@ -19,9 +19,10 @@
             <br />
             <br />
             <span class="mif-bubble" style="margin-left:10px;"></span>
-            Gesti&oacute;n de permisos
-            <asp:Button runat="server" ID="btnAdminPer" Text="Administrar Menu" style="margin-left:55.5%;"/>
-            <asp:Button runat="server" ID="btnGuardarPer" Text="Guardar"/>
+            Gesti&oacute;n de Permisos
+            <asp:Button runat="server" ID="btnAdminPer" Text="Administrar Menu" style="margin-left:47%;border-radius:8px;"/>
+            <asp:Button runat="server" ID="btnGuardarPer" Text="Guardar" style="border-radius:8px;"/>
+            <asp:Button runat="server" ID="btnNuevoPer" Text="Nuevo" OnClick="btnNuevoPer_Click" style="border-radius:8px;"/> 
             <hr />
             <asp:GridView runat="server" ID="gv_rol" CssClass="table-bordered" HeaderStyle-BackColor="#3399ff" AutoGenerateColumns="False" Width="920px" CellPadding="4" ForeColor="#333333" GridLines="None" >
                 <AlternatingRowStyle BackColor="White" />
@@ -33,6 +34,7 @@
                         <ItemTemplate>
                             <asp:Label ID="lblID" runat="server"></asp:Label>
                         </ItemTemplate>
+                        <ItemStyle Width="70px" />
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Descripcion">
                         <EditItemTemplate>
@@ -49,7 +51,15 @@
                         <ItemTemplate>
                             <asp:CheckBox ID="CheckRol" runat="server" />
                         </ItemTemplate>
+
+<ItemStyle Width="100px"></ItemStyle>
                     </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True">
+                    <ItemStyle Width="90px" />
+                    </asp:CommandField>
+                    <asp:CommandField ShowDeleteButton="True">
+                    <ItemStyle Width="50px" />
+                    </asp:CommandField>
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

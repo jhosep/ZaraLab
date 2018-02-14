@@ -26,4 +26,8 @@ public partial class Permisos : System.Web.UI.Page
         }
 
     }
+    protected void btnNuevoPer_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CrearPermiso.aspx");
+    }
 }

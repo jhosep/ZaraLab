@@ -8,7 +8,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">            
                 <span class="mif-lock"></span>
-                Administraci&oacute;n de roles
+                Administraci&oacute;n de Roles
             <asp:TextBox runat="server" ID="txtBuscarRol" style="margin-left:31.5%;" placeholder="Buscar..."></asp:TextBox>
             <asp:Button runat="server" ID="btnBuscarR" Text="Buscar" style="border-radius:8px;"/>
             <asp:Button runat="server" ID="btnNuevo" Text="Nuevo" OnClick="btnNuevo_Click" style="border-radius:8px;" />
@@ -27,6 +27,7 @@
                         <ItemTemplate>
                             <asp:Label ID="Label1" runat="server"></asp:Label>
                         </ItemTemplate>
+                        <ItemStyle Width="70px" />
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Descripcion">
                         <EditItemTemplate>
@@ -36,20 +37,12 @@
                             <asp:Label ID="Label2" runat="server"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ShowHeader="False" ItemStyle-Width="50px">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandName="" Text="Eliminar"></asp:LinkButton>
-                        </ItemTemplate>
-
-<ItemStyle Width="50px"></ItemStyle>
-                    </asp:TemplateField>
-                    <asp:TemplateField ShowHeader="False" ItemStyle-Width="50px">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="false" CommandName="" Text="Actualizar"></asp:LinkButton>
-                        </ItemTemplate>
-
-<ItemStyle Width="50px"></ItemStyle>
-                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True">
+                    <ItemStyle Width="90px" />
+                    </asp:CommandField>
+                    <asp:CommandField ShowDeleteButton="True">
+                    <ItemStyle Width="50px" />
+                    </asp:CommandField>
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
