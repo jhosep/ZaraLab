@@ -12,7 +12,11 @@
     <webopt:BundleReference runat="server" Path="~/Content/css" /> 
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="Content/StyleMain.css"/>    +
-	<link rel="stylesheet" href="https://cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro-icons.min.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro-icons.min.css"/>
+    <link rel="stylesheet" href="Content/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="Content/themes/base/jquery.ui.tabs.css"/>
+    <script src="Scripts/jquery-1.7.1.js"></script>
+    <script src="Scripts/jquery-ui-1.8.20.js"></script>
     <link rel="stylesheet" href="Content/PanelStyle.css" />
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />

@@ -20,6 +20,10 @@ public partial class Roles : System.Web.UI.Page
             dr["ID"] = 1;
             dr["Descripcion"] = "Administracion de facturas";
             dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["ID"] = 1;
+            dr["Descripcion"] = "Administracion de facturas";
+            dt.Rows.Add(dr);
 
             gv_lista_roles.DataSource = dt;
             gv_lista_roles.DataBind();
@@ -28,5 +32,20 @@ public partial class Roles : System.Web.UI.Page
     protected void btnNuevo_Click(object sender, EventArgs e)
     {
         Response.Redirect("CrearRoles.aspx");
+    }
+    protected void gv_lista_roles_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        switch (e.CommandName)
+        {
+            case ("btnEdit"):
+                Response.Write("<script>alert('push edit')</script>");
+                break;
+            case ("btnSave"):
+                Response.Write("<script>alert('push save')</script>");
+                break;
+            case ("btnDelete"):
+                Response.Write("<script>alert('push delete')</script>");
+                break;
+        }
     }
 }

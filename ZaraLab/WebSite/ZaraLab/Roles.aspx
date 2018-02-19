@@ -14,8 +14,9 @@
             <asp:Button runat="server" ID="btnNuevo" Text="Nuevo" OnClick="btnNuevo_Click" style="border-radius:8px;" />
         </div>
         <div class="panel-body">
-            <asp:GridView runat="server" ID="gv_lista_roles" CssClass="table-bordered" HeaderStyle-BackColor="#3399ff"
-                 Width="911px" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+           <asp:GridView runat="server" ID="gv_lista_roles" CssClass="table-bordered" HeaderStyle-BackColor="#3399ff"
+                 Width="911px" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" 
+               OnRowCommand="gv_lista_roles_RowCommand" DataKeyNames="ID">
 
                 <AlternatingRowStyle BackColor="White" />
 
@@ -37,12 +38,17 @@
                             <asp:Label ID="Label2" runat="server"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField ShowEditButton="True">
-                    <ItemStyle Width="90px" />
-                    </asp:CommandField>
-                    <asp:CommandField ShowDeleteButton="True">
-                    <ItemStyle Width="50px" />
-                    </asp:CommandField>
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemStyle Width="19.7%"/>
+                        <ItemTemplate>
+                            <asp:ImageButton ID="btnEdit" runat="server" ImageUrl="~/Images/edit.png" Height="35px" Width="35px" BackColor="#c0c0c0"
+                                 style="margin-left:10%;" CausesValidation="false" CommandName="btnEdit" ></asp:ImageButton>
+                            <asp:ImageButton ID="btnSave" runat="server" ImageUrl="~/Images/Save-as-icon.png" Height="35px" Width="35px" BackColor="#c0c0c0"
+                                CausesValidation="false" CommandName="btnSave" OnClientClick="javascript:if(!confirm('¿Desea guardar cambios?'))return false"></asp:ImageButton>
+                            <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="~/Images/delete-file-icon.png" Height="35px" Width="35px" BackColor="#c0c0c0" 
+                                CausesValidation="false" CommandName="btnDelete" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false"></asp:ImageButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>            
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -59,6 +65,5 @@
             </asp:GridView>
         </div>
     </div>
-    
     
 </asp:Content>

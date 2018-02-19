@@ -20,14 +20,34 @@ public partial class Permisos : System.Web.UI.Page
             dr["ID"] = 1;
             dr["Descripcion"] = "Administracion de facturas";
             dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr["ID"] = 1;
+            dr["Descripcion"] = "Administracion de facturas";
+            dt.Rows.Add(dr);
          
-            gv_rol.DataSource = dt;
-            gv_rol.DataBind();
+            gv_Permiso.DataSource = dt;
+            gv_Permiso.DataBind();
         }
 
     }
     protected void btnNuevoPer_Click(object sender, EventArgs e)
     {
         Response.Redirect("CrearPermiso.aspx");
+    }
+
+    protected void gv_Permiso_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        switch (e.CommandName)
+        {
+            case("btnEdit"):
+                Response.Write("<script>alert('push edit')</script>");
+                break;
+            case ("btnSave"):
+                Response.Write("<script>alert('push save')</script>");
+                break;
+            case ("btnDelete"):
+                Response.Write("<script>alert('push delete')</script>");
+                break;
+        }
     }
 }
