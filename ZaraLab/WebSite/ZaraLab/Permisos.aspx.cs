@@ -8,25 +8,27 @@ using System.Data;
 
 public partial class Permisos : System.Web.UI.Page
 {
+    public void cargar_dropdown()
+    {
+        ClaseRoles funciones = new ClaseRoles();
+        Lista_roles.DataSource = funciones.obtenerDatosRoles();
+        Lista_roles.DataTextField = "nombre_rol";
+        Lista_roles.DataValueField = "id_rol";
+        Lista_roles.DataBind();
+    }
+
+    public void cargar_gv_permisos()
+    {
+        ClasePermisos funciones = new ClasePermisos();
+        gv_Permiso.DataSource = funciones.obtener_permisos();
+        gv_Permiso.DataBind();
+    }
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ID");
-            dt.Columns.Add("Descripcion");
-            DataRow dr = null;
-            dr = dt.NewRow();
-            dr["ID"] = 1;
-            dr["Descripcion"] = "Administracion de facturas";
-            dt.Rows.Add(dr);
-            dr = dt.NewRow();
-            dr["ID"] = 1;
-            dr["Descripcion"] = "Administracion de facturas";
-            dt.Rows.Add(dr);
-         
-            gv_Permiso.DataSource = dt;
-            gv_Permiso.DataBind();
+            cargar_dropdown();
         }
 
     }
@@ -34,20 +36,29 @@ public partial class Permisos : System.Web.UI.Page
     {
         Response.Redirect("CrearPermiso.aspx");
     }
-
-    protected void gv_Permiso_RowCommand(object sender, GridViewCommandEventArgs e)
+        
+    protected void gv_Permiso_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-        switch (e.CommandName)
-        {
-            case("btnEdit"):
-                Response.Write("<script>alert('push edit')</script>");
-                break;
-            case ("btnSave"):
-                Response.Write("<script>alert('push save')</script>");
-                break;
-            case ("btnDelete"):
-                Response.Write("<script>alert('push delete')</script>");
-                break;
-        }
+
+    }   
+    protected void gv_Permiso_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+        gv_Permiso.EditIndex = e.NewEditIndex;
+        cargar_gv_permisos();
+    }
+
+    protected void gv_Permiso_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+
+    }
+
+    protected void gv_Permiso_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    {
+        gv_Permiso.EditIndex = -1;
+        cargar_gv_permisos();
+    }
+    protected void btnAdminPer_Click(object sender, EventArgs e)
+    {
+        cargar_gv_permisos();
     }
 }

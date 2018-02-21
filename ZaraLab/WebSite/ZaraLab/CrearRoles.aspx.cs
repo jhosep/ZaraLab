@@ -15,4 +15,21 @@ public partial class CrearRoles : System.Web.UI.Page
     {
         Response.Redirect("Roles.aspx");
     }
+    protected void btnCrear_Click(object sender, EventArgs e)
+    {
+        ClaseRoles funciones = new ClaseRoles();
+        funciones.nombre_rol = txtNRol.Text;
+        funciones.descripcion_rol = txtTRol.Text;
+        String mensaje = funciones.insertar_roles(funciones);
+        if (mensaje.Equals("1"))
+        {
+            Response.Write("<script>alert('Rol creado con exito')</script>");
+        }
+        else
+        {
+            Response.Write("<script>alert('" + mensaje + "')</script>");
+        }
+        txtNRol.Text = "";
+        txtTRol.Text = "";
+    }
 }

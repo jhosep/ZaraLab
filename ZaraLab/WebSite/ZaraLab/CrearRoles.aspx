@@ -22,7 +22,7 @@
             <hr />
             <asp:Button runat="server" ID="btnRegresar" Text="Regresar" style="border-radius:8px;margin-left:30%;" 
                 OnClick="btnRegresar_Click"/>
-            <asp:Button runat="server" ID="btnCrear" Text="Guardar" style="border-radius:8px;"/>
+            <asp:Button runat="server" ID="btnCrear" Text="Guardar" style="border-radius:8px;" OnClick="btnCrear_Click"/>
         </div>
     </div>
     

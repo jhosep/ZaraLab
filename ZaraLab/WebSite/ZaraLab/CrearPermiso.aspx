@@ -15,14 +15,14 @@
         </div>
         <div class="panel-body">
             <asp:Label runat="server" ID="NRol" Text="Permiso" style="margin-left:2.5%;"></asp:Label>
-            <asp:TextBox runat="server" ID="txtNRol" Width="400px"></asp:TextBox>
+            <asp:TextBox runat="server" ID="txtNP" Width="400px"></asp:TextBox>
             <br />
             <asp:Label runat="server" ID="TRol" Text="Descripción" ></asp:Label>
-            <asp:TextBox runat="server" ID="txtTRol" Width="400px"></asp:TextBox>
+            <asp:TextBox runat="server" ID="txtTP" Width="400px"></asp:TextBox>
             <hr />
             <asp:Button runat="server" ID="btnRegresar" Text="Regresar" style="border-radius:8px;margin-left:30%;" 
                 OnClick="btnRegresar_Click"/>
-            <asp:Button runat="server" ID="btnCrear" Text="Guardar" style="border-radius:8px;"/>
+            <asp:Button runat="server" ID="btnCrear" Text="Guardar" style="border-radius:8px;" OnClick="btnCrear_Click"/>
         </div>
     </div>
 </asp:Content>

@@ -15,45 +15,54 @@
         </div>
         <div class="panel-body">
            <asp:GridView runat="server" ID="gv_lista_roles" CssClass="table-bordered" HeaderStyle-BackColor="#3399ff"
-                 Width="911px" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" 
-               OnRowCommand="gv_lista_roles_RowCommand" DataKeyNames="ID">
+                 Width="911px" AutoGenerateColumns="False" 
+                DataKeyNames="id_rol" OnRowCancelingEdit="gv_lista_roles_RowCancelingEdit" OnRowDeleting="gv_lista_roles_RowDeleting" OnRowEditing="gv_lista_roles_RowEditing" OnRowUpdating="gv_lista_roles_RowUpdating" CellPadding="4" ForeColor="#333333" GridLines="None">
 
                 <AlternatingRowStyle BackColor="White" />
 
                 <Columns>
-                    <asp:TemplateField HeaderText="ID">
+                    <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="id_rol">
+                        <ItemStyle Width="5%"/>
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("id_rol") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server"></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("id_rol") %>'></asp:Label>
                         </ItemTemplate>
-                        <ItemStyle Width="70px" />
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Descripcion">
+                    <asp:TemplateField HeaderText="ROL" SortExpression="nombre_rol">
+                        <ItemStyle Width="77%"/>
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtRol" runat="server" Text='<%# Bind("nombre_rol") %>'></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server"></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("nombre_rol") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    
                     <asp:TemplateField ShowHeader="False">
-                        <ItemStyle Width="19.7%"/>
+                        <EditItemTemplate>
+                            <asp:ImageButton ID="SaveBtn" runat="server" CausesValidation="True" CommandName="Update" 
+                                ImageUrl="~/Images/Save-as-icon.png" Width="30px" Height="30px" BackColor="#c0c0c0"
+                                OnClientClick="javascript:if(!confirm('¿Desea modificar el registro?'))return false"></asp:ImageButton>
+                            &nbsp;<asp:ImageButton ID="CancelBtn" runat="server" CausesValidation="False" CommandName="Cancel"
+                                 ImageUrl="~/Images/Actions-application-exit-icon.png" Width="30px" Height="30px" BackColor="#c0c0c0"></asp:ImageButton>
+                        </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:ImageButton ID="btnEdit" runat="server" ImageUrl="~/Images/edit.png" Height="35px" Width="35px" BackColor="#c0c0c0"
-                                 style="margin-left:10%;" CausesValidation="false" CommandName="btnEdit" ></asp:ImageButton>
-                            <asp:ImageButton ID="btnSave" runat="server" ImageUrl="~/Images/Save-as-icon.png" Height="35px" Width="35px" BackColor="#c0c0c0"
-                                CausesValidation="false" CommandName="btnSave" OnClientClick="javascript:if(!confirm('¿Desea guardar cambios?'))return false"></asp:ImageButton>
-                            <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="~/Images/delete-file-icon.png" Height="35px" Width="35px" BackColor="#c0c0c0" 
-                                CausesValidation="false" CommandName="btnDelete" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false"></asp:ImageButton>
+                            <asp:ImageButton ID="EditBtn" runat="server" CausesValidation="False" CommandName="Edit" 
+                                ImageUrl="~/Images/edit.png" Width="30px" Height="30px" BackColor="#c0c0c0"></asp:ImageButton>
+                             <asp:ImageButton ID="DeleteBtn" runat="server" CausesValidation="False" CommandName="Delete"
+                                  ImageUrl="~/Images/delete-file-icon.png" Width="30px" Height="30px" BackColor="#c0c0c0"
+                                 OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false"></asp:ImageButton>
                         </ItemTemplate>
-                    </asp:TemplateField>            
+                    </asp:TemplateField>
+                                       
                 </Columns>
-                <EditRowStyle BackColor="#2461BF" />
-                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-<HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
+                <EditRowStyle BackColor="white" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+
+<HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
                 <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
                 <RowStyle BackColor="#EFF3FB" />
                 <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
@@ -62,8 +71,9 @@
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
 
-            </asp:GridView>
+            </asp:GridView>            
         </div>
     </div>
+      
     
 </asp:Content>

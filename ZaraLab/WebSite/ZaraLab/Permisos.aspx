@@ -16,45 +16,38 @@
             
             <asp:Label runat="server" style="margin-left:60px;">Seleccione un rol</asp:Label>
             <asp:DropDownList runat="server" ID="Lista_roles" style="margin-left:10px;" Width="200px">
-                <asp:ListItem>Administracion</asp:ListItem>
             </asp:DropDownList>
+                
             <br />
             <br />
             <span class="mif-bubble" style="margin-left:10px;"></span>
             Gesti&oacute;n de Permisos
-            <asp:Button runat="server" ID="btnAdminPer" Text="Administrar Menu" style="margin-left:45%;border-radius:8px;"/>
+            <asp:Button runat="server" ID="btnAdminPer" Text="Administrar Menu" style="margin-left:45%;border-radius:8px;" OnClick="btnAdminPer_Click"/>
             <asp:Button runat="server" ID="btnGuardarPer" Text="Guardar" style="border-radius:8px;"/>
             <asp:Button runat="server" ID="btnNuevoPer" Text="Nuevo" OnClick="btnNuevoPer_Click" style="border-radius:8px;"/> 
             <br />
-            <div id="tabs">
-                <ul>
-                    <li><a href="#tabs-1">Tecnico Lab.</a></li>
-                    <li><a href="#tabs-2">Ventas</a></li>
-                    <li><a href="#tabs-3">Compras</a></li>
-                    <li><a href="#tabs-4">Contabilidad</a></li>
-                </ul>
-                <div id="tabs-1">
-                    <asp:GridView runat="server" ID="gv_Permiso" CssClass="table-bordered" HeaderStyle-BackColor="#3399ff"
-                         AutoGenerateColumns="False" Width="820px" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="gv_Permiso_RowCommand" >
+            <asp:GridView runat="server" ID="gv_Permiso" CssClass="table-bordered" HeaderStyle-BackColor="#3399ff"
+                         AutoGenerateColumns="False" Width="880px" CellPadding="4" ForeColor="#333333" GridLines="None"
+                 DataKeyNames="id_permiso" OnRowCancelingEdit="gv_Permiso_RowCancelingEdit" OnRowDeleting="gv_Permiso_RowDeleting" OnRowEditing="gv_Permiso_RowEditing" OnRowUpdating="gv_Permiso_RowUpdating" >
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
-                    <asp:TemplateField HeaderText="ID">
+                    <asp:TemplateField HeaderText="ID" InsertVisible="False" SortExpression="id_permiso">
+                        <ItemStyle Width="5%"/>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtID" runat="server"></asp:TextBox>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("id_permiso") %>'></asp:Label>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lblID" runat="server"></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("id_permiso") %>'></asp:Label>
                         </ItemTemplate>
-                        <ItemStyle Width="70px" />
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Descripcion">
+                    <asp:TemplateField HeaderText="Permiso" SortExpression="nombre_permiso">
+                        <ItemStyle Width="77%"/>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtRol" runat="server" Text='<%# Bind("nombre_permiso") %>'></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="lblDescripcion" runat="server"></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("nombre_permiso") %>'></asp:Label>
                         </ItemTemplate>
-                        <ItemStyle Width="300px" />
                     </asp:TemplateField>
                     <asp:TemplateField ShowHeader="false" >
                         <ItemStyle Width="5px"/>
@@ -67,20 +60,25 @@
 
 <ItemStyle Width="5px"></ItemStyle>
                    
-                    </asp:TemplateField>
-                    <asp:TemplateField ShowHeader="False">
-                        <ItemStyle Width="19.7%"/>
+                    </asp:TemplateField>                                     
+                   <asp:TemplateField ShowHeader="False">
+                        <EditItemTemplate>
+                            <asp:ImageButton ID="SaveBtn" runat="server" CausesValidation="True" CommandName="Update" 
+                                ImageUrl="~/Images/Save-as-icon.png" Width="30px" Height="30px" BackColor="#c0c0c0"
+                                OnClientClick="javascript:if(!confirm('¿Desea modificar el registro?'))return false"></asp:ImageButton>
+                            &nbsp;<asp:ImageButton ID="CancelBtn" runat="server" CausesValidation="False" CommandName="Cancel"
+                                 ImageUrl="~/Images/Actions-application-exit-icon.png" Width="30px" Height="30px" BackColor="#c0c0c0"></asp:ImageButton>
+                        </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:ImageButton ID="btnEdit" runat="server" ImageUrl="~/Images/edit.png" Height="35px" Width="35px" BackColor="#c0c0c0"
-                                  CausesValidation="false" CommandName="btnEdit" ></asp:ImageButton>
-                            <asp:ImageButton ID="btnSave" runat="server" ImageUrl="~/Images/Save-as-icon.png" Height="35px" Width="35px" BackColor="#c0c0c0"
-                                CausesValidation="false" CommandName="btnSave" OnClientClick="javascript:if(!confirm('¿Desea guardar cambios?'))return false"></asp:ImageButton>
-                            <asp:ImageButton ID="btnDelete" runat="server" ImageUrl="~/Images/delete-file-icon.png" Height="35px" Width="35px" BackColor="#c0c0c0" 
-                                CausesValidation="false" CommandName="btnDelete" OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false"></asp:ImageButton>
+                            <asp:ImageButton ID="EditBtn" runat="server" CausesValidation="False" CommandName="Edit" 
+                                ImageUrl="~/Images/edit.png" Width="30px" Height="30px" BackColor="#c0c0c0"></asp:ImageButton>
+                             <asp:ImageButton ID="DeleteBtn" runat="server" CausesValidation="False" CommandName="Delete"
+                                  ImageUrl="~/Images/delete-file-icon.png" Width="30px" Height="30px" BackColor="#c0c0c0"
+                                 OnClientClick="javascript:if(!confirm('¿Desea borrar el registro?'))return false"></asp:ImageButton>
                         </ItemTemplate>
                     </asp:TemplateField>                    
                 </Columns>
-                <EditRowStyle BackColor="#2461BF" />
+                <EditRowStyle BackColor="White" />
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
                 <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
@@ -90,19 +88,9 @@
                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
-            </asp:GridView>
-                </div>
-                <div id="tabs-2">Mundo</div>
-                <div id="tabs-3">De</div>
-                <div id="tabs-4">Tabs</div>
-            </div>            
+            </asp:GridView>       
             
         </div>        
-    </div>
-    <script>
-        $(function () {
-            $("#tabs").tabs();
-        });
-    </script>
+    </div>  
     
 </asp:Content>
